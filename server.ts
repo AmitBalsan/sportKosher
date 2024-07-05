@@ -25,21 +25,21 @@ if (mongoUri) {
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.resolve("public")));
 } else {
-  const corsOptions = {
-    origin: [
-      "http://127.0.0.1:5173",
-      "http://localhost:5173",
-      "https://sportkosher.onrender.com/",
-      "https://sportkosher.onrender.com:5173/",
-    ],
-    credentials: true,
-  };
-  app.use(cors(corsOptions));
+  // const corsOptions = {
+  //   origin: [
+  //     "http://127.0.0.1:5173",
+  //     "http://localhost:5173",
+  //     "https://sportkosher.onrender.com/",
+  //     "https://sportkosher.onrender.com:5173/",
+  //   ],
+  //   credentials: true,
+  // };
+  app.use(cors());
 }
 
 app.use(express.json());
 app.put("/register-user", registerUser);
-app.post("/login", loginUser);
+app.post("/login-user", loginUser);
 
 app.post("/send-email", async (req: express.Request, res: express.Response) => {
   console.log("enter send - mail");
